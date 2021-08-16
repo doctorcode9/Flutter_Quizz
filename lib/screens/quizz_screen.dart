@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizz_app/ui/shared/color.dart';
 
 class QuizzScreen extends StatefulWidget {
   const QuizzScreen({Key? key}) : super(key: key);
@@ -10,6 +11,8 @@ class QuizzScreen extends StatefulWidget {
 class _QuizzScreenState extends State<QuizzScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: AppColor.pripmaryColor,
+    );
   }
 }

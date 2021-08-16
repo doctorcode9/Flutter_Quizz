@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quizz_app/screens/quizz_screen.dart';
 import 'package:quizz_app/ui/shared/color.dart';
 
 class MainMenu extends StatefulWidget {
@@ -23,7 +24,7 @@ class _MainMenuState extends State<MainMenu> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
+            const Center(
               child: Text(
                 "Quizz App",
                 style: TextStyle(
@@ -36,12 +37,19 @@ class _MainMenuState extends State<MainMenu> {
             Expanded(
               child: Center(
                 child: RawMaterialButton(
-                  onPressed: () {},
-                  shape: StadiumBorder(),
+                  onPressed: () {
+                    //Navigating the the Quizz Screen
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QuizzScreen(),
+                        ));
+                  },
+                  shape: const StadiumBorder(),
                   fillColor: AppColor.secondaryColor,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 12.0, horizontal: 24.0),
+                  child: const Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
                     child: Text(
                       "Start the Quizz",
                       style: TextStyle(
@@ -54,7 +62,7 @@ class _MainMenuState extends State<MainMenu> {
                 ),
               ),
             ),
-            Center(
+            const Center(
               child: Text(
                 "Made with ❤ by Mouheb Boucherb",
                 textAlign: TextAlign.center,
