@@ -38,13 +38,11 @@ class _QuizzScreenState extends State<QuizzScreen> {
               if (page == questions.length - 1) {
                 setState(() {
                   btnText = "See Results";
-                  
                 });
-              } 
-                setState(() {
-                  answered = false;
-               
               }
+              setState(() {
+                answered = false;
+              });
             },
             physics: new NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
