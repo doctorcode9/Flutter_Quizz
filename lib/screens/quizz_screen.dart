@@ -18,6 +18,7 @@ class _QuizzScreenState extends State<QuizzScreen> {
   bool btnPressed = false;
   PageController? _controller;
   String btnText = "Next Question";
+  bool answered = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -37,6 +38,10 @@ class _QuizzScreenState extends State<QuizzScreen> {
               if (page == questions.length - 1) {
                 setState(() {
                   btnText = "See Results";
+                });
+              } else {
+                setState(() {
+                  answered = false;
                 });
               }
             },
@@ -89,17 +94,23 @@ class _QuizzScreenState extends State<QuizzScreen> {
                                 ? Colors.green
                                 : Colors.red
                             : AppColor.secondaryColor,
-                        onPressed: () {
-                          if (questions[index].answers!.values.toList()[i]) {
-                            score++;
-                            print("yes");
-                          } else {
-                            print("no");
-                          }
-                          setState(() {
-                            btnPressed = true;
-                          });
-                        },
+                        onPressed: !answered
+                            ? () {
+                                if (questions[index]
+                                    .answers!
+                                    .values
+                                    .toList()[i]) {
+                                  score++;
+                                  print("yes");
+                                } else {
+                                  print("no");
+                                }
+                                setState(() {
+                                  btnPressed = true;
+                                  answered = true;
+                                });
+                              }
+                            : null,
                         child: Text(questions[index].answers!.keys.toList()[i],
                             style: TextStyle(
                               color: Colors.white,
